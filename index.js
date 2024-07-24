@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", loadUsers);
+
 function handleFormSubmit(event) {
     event.preventDefault();
     const userDetails = {
@@ -50,7 +51,6 @@ function displayUserOnScreen(userDetails) {
 
     editBtn.addEventListener("click", function (event) {
         userList.removeChild(event.target.parentElement);
-        localStorage.removeItem(userDetails.email);
         document.getElementById("username").value = userDetails.username;
         document.getElementById("email").value = userDetails.email;
         document.getElementById("phone").value = userDetails.phone;
@@ -67,3 +67,5 @@ function loadUsers() {
         })
         .catch((error) => console.log(error));
 }
+
+document.getElementById("userForm").addEventListener("submit", handleFormSubmit);
