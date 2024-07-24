@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", loadUsers);
 function handleFormSubmit(event) {
     event.preventDefault();
     const userDetails = {
@@ -52,3 +53,13 @@ function displayUserOnScreen(userDetails) {
     });
 }
 
+function loadUsers() {
+    axios
+        .get("https://crudcrud.com/api/4f6952e76d4d4355976a2f07f7f65f7f/appointmentData")
+        .then((response) => {
+            response.data.forEach((user) => {
+                displayUserOnScreen(user);
+            });
+        })
+        .catch((error) => console.log(error));
+}
